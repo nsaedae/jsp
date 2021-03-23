@@ -88,7 +88,6 @@
 	</form>
 	
 	<h3>Client 정보 출력</h3>
-	
 	<p>
 		헤더정보 : <%= request.getHeader("User-Agent") %><br />
 		통신규약 : <%= request.getProtocol() %><br />
