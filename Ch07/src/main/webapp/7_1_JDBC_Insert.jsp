@@ -12,6 +12,9 @@
 </head>
 <body>
 	<h3>1.JSP JDBC Insert 실습</h3>
+	
+	<a href="./7_2_JDBC_Select.jsp">목록보기</a>
+	
 	<form action="./proc/insertProc.jsp" method="get">
 		<table border="1">
 			<tr>
