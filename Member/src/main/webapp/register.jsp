@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h3>직원등록</h3>
-	
+	<a href="./list.jsp">직원목록</a>
 	<form action="./proc/registerProc.jsp" method="post">
 		<table border="1">
 			<tr>
