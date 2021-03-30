@@ -44,11 +44,10 @@
     <link rel="stylesheet" href="../css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-    	$(function(){
-    		
+    	$(function(){    		
     		var btnNext = $('#user > div > a:eq(1)');
+    		
     		btnNext.click(function(){
-    			
     			var isOkchk1 = $('input[name=chk1]').is(':checked');
         		var isOkchk2 = $('input[name=chk2]').is(':checked');
     			

@@ -9,7 +9,7 @@
 <body>
     <div id="wrapper">
         <section id="user" class="register">
-            <form action="#" method="POST">
+            <form action="/Jboard1/user/proc/register.jsp" method="POST">
                 <table border="1">
                     <caption>사이트 이용정보 입력</caption>
                     <tr>
@@ -79,8 +79,8 @@
                 </table>
 
                 <div>
-                    <a href="./login.html" class="btnCancel">취소</a>
-                    <input type="submit"   class="btnJoin" value="회원가입"/>
+                    <a href="/Jboard1/user/login.jsp" class="btnCancel">취소</a>
+                    <input type="submit" class="btnJoin" value="회원가입"/>
                 </div>
 
             </form>
