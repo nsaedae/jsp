@@ -6,46 +6,7 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="../css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-    	$(function(){
-			// 아이디 중복체크
-			var inputUid = $('input[name=uid]');
-    		
-			inputUid.focusout(function(){
-				
-				var uid = $(this).val();
-				var jsonData = {'uid': uid};
-				
-				$.ajax({
-					url: '/Jboard1/user/proc/checkUid.jsp',
-					type: 'get',
-					data: jsonData,
-					dataType: 'json',
-					success: function(data){
-						
-						if(data.result == 0){
-							$('.resultId').css('color', 'green').text('사용 가능한 아이디 입니다.');
-						}else{
-							$('.resultId').css('color', 'red').text('이미 사용중인 아이디 입니다.');
-						}
-					}
-				});
-				
-			});
-    		
-    	});   
-    </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <script src="/Jboard1/js/checkUserAjax.js"></script>
 </head>
 <body>
     <div id="wrapper">
