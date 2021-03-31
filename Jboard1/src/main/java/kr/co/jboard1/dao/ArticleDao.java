@@ -3,6 +3,7 @@ package kr.co.jboard1.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +19,37 @@ public class ArticleDao {
 		return instance;
 	}
 	
-	public void selectCountArticle() throws Exception {
-		/*
-		String sqlCount = "SELECT COUNT(*) FROM `JBOARD_ARTICLE`;";
+	public int getLastPageNum(int total) {
+		
+		int lastPageNum = 0;
+		
+		if(total % 10 == 0) {
+			lastPageNum = total / 10;
+		}else {
+			lastPageNum = total / 10 + 1;
+		}
+		
+		return lastPageNum;
+	}
+	
+	public int selectCountArticle() throws Exception {
+		
+		Connection conn = DBConfig.getInstance().getConnection();
 		Statement stmt = conn.createStatement();
 		
-		ResultSet rsCount = stmt.executeQuery(sqlCount);
+		ResultSet rs = stmt.executeQuery(Sql.SELECT_COUNT_ARTICLE);
 		
-		if(rsCount.next()){
-			total = rsCount.getInt(1);
+		int total = 0;
+		
+		if(rs.next()){
+			total = rs.getInt(1);
 		}
-		*/
+		
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return total;
 	}
 	
 	
