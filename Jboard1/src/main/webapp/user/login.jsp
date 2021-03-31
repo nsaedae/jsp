@@ -1,15 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String result = request.getParameter("result");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
     <link rel="stylesheet" href="../css/style.css"/>
+    <script>
+    	var result = "<%= result %>";
+    	if(result == 0){
+    		alert('해당하는 회원이 없습니다. 다시 확인하시기 바랍니다.');
+    	}
+    </script>
 </head>
 <body>
     <div id="wrapper">
         <section id="user" class="login">
-            <form action="../list.html">
+            <form action="/Jboard1/user/proc/login.jsp" method="post">
                 <table border="0">
                     <tr>
                         <td><img src="../img/login_ico_id.png" alt="아이디"/></td>
