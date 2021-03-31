@@ -21,7 +21,9 @@
 	Connection conn = DBConfig.getInstance().getConnection();
 	
 	// 3단계
-	String sql = "SELECT * FROM `JBOARD_ARTICLE`;";
+	String sql  = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a ";
+	       sql += "JOIN `JBOARD_USER` AS b ON a.uid = b.uid;";
+	       
 	PreparedStatement psmt = conn.prepareStatement(sql);
 	
 	// 4단계
@@ -43,6 +45,7 @@
 		ab.setUid(rs.getString(9));
 		ab.setRegip(rs.getString(10));
 		ab.setRdate(rs.getString(11));
+		ab.setNick(rs.getString(12));
 		
 		articles.add(ab);
 	}
@@ -80,7 +83,7 @@
 	                    <tr>
 	                        <td><%= ab.getSeq() %></td>
 	                        <td><a href="./view.html"><%= ab.getTitle() %></a>&nbsp;[<%= ab.getComment() %>]</td>
-	                        <td><%= ab.getUid() %></td>
+	                        <td><%= ab.getNick() %></td>
 	                        <td><%= ab.getRdate().substring(2, 10) %></td>
 	                        <td><%= ab.getHit() %></td>
 	                    </tr>
