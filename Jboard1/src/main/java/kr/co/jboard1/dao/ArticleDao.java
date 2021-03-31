@@ -19,17 +19,17 @@ public class ArticleDao {
 		return instance;
 	}
 	
-	public int getLimitStart(String pg) {
-		
-		int page = 1;
-		int start = 0;
+	public int getCurrentPage(String pg) {
+		int currentPage = 1;
 		
 		if(pg != null) {
-			page = Integer.parseInt(pg);
-			start = (page - 1) * 10;
+			currentPage = Integer.parseInt(pg);
 		}
-		
-		return start;
+		return currentPage;
+	}
+	
+	public int getLimitStart(int currentPage) {
+		return (currentPage - 1) * 10;
 	}
 	
 	public int getLastPageNum(int total) {

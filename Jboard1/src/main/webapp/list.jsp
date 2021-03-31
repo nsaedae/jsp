@@ -27,7 +27,8 @@
 	
 	int total       = dao.selectCountArticle();
 	int lastPageNum = dao.getLastPageNum(total);
-	int start       = dao.getLimitStart(pg); // limit용 start 변수
+	int currentPage = dao.getCurrentPage(pg);
+	int start       = dao.getLimitStart(currentPage); // limit용 start 변수
 	
 	// 데이터베이스 처리
 	List<ArticleBean> articles = dao.selectArticles(start);
@@ -74,7 +75,7 @@
             <div class="paging">
                 <a href="#" class="prev">이전</a>
                 <% for(int i=1 ; i<=lastPageNum ; i++){ %>
-                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num"><%= i %></a>                
+                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num <%= (currentPage == i) ? "current":"off" %>"><%= i %></a>                
                 <% } %>
                 <a href="#" class="next">다음</a>
             </div>
