@@ -1,3 +1,5 @@
+<%@page import="kr.co.jboard1.bean.ArticleBean"%>
+<%@page import="kr.co.jboard1.dao.ArticleDao"%>
 <%@page import="kr.co.jboard1.bean.UserBean"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -15,30 +17,14 @@
 	// 세션 사용자 정보객체 가져오기
 	UserBean user = (UserBean) session.getAttribute("suser");
 	
-	// 1,2단계
-	Connection conn = DBConfig.getInstance().getConnection();
+	// 데이터베이스 처리
+	ArticleBean article = new ArticleBean();
+	article.setTitle(title);
+	article.setContent(content);
+	article.setUid(user.getUid());
+	article.setRegip(regip);
 	
-	// 3단계
-	String sql  = "INSERT INTO `JBOARD_ARTICLE` SET ";
-		   sql += "`title`=?,";
-		   sql += "`content`=?,";
-		   sql += "`uid`=?,";
-		   sql += "`regip`=?,";
-		   sql += "`rdate`=NOW();";
-	
-	PreparedStatement psmt = conn.prepareStatement(sql);
-	psmt.setString(1, title);
-	psmt.setString(2, content);
-	psmt.setString(3, user.getUid());
-	psmt.setString(4, regip);
-	
-	// 4단계
-	psmt.executeUpdate();
-	
-	// 5단계
-	// 6단계
-	psmt.close();
-	conn.close();
+	ArticleDao.getInstance().insertArticle(article);
 
 	// 게시판 목록 리다이렉트
 	response.sendRedirect("/Jboard1/list.jsp");
