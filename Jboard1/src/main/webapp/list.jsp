@@ -19,12 +19,15 @@
 		return; // 프로그램 종료
 	}
 	
-	// 페이지 관련 변수
-	ArticleDao dao = ArticleDao.getInstance();
+	// 전송 데이터 수신
+	String pg = request.getParameter("pg");
 	
-	int total = dao.selectCountArticle();
+	// 페이지 관련 변수
+	ArticleDao dao  = ArticleDao.getInstance();
+	
+	int total       = dao.selectCountArticle();
 	int lastPageNum = dao.getLastPageNum(total);
-	int start = 0; // limit용 start 변수
+	int start       = dao.getLimitStart(pg); // limit용 start 변수
 	
 	// 데이터베이스 처리
 	List<ArticleBean> articles = dao.selectArticles(start);
@@ -71,7 +74,7 @@
             <div class="paging">
                 <a href="#" class="prev">이전</a>
                 <% for(int i=1 ; i<=lastPageNum ; i++){ %>
-                	<a href="#" class="num"><%= i %></a>                
+                	<a href="/Jboard1/list.jsp?pg=<%= i %>" class="num"><%= i %></a>                
                 <% } %>
                 <a href="#" class="next">다음</a>
             </div>

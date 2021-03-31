@@ -19,6 +19,19 @@ public class ArticleDao {
 		return instance;
 	}
 	
+	public int getLimitStart(String pg) {
+		
+		int page = 1;
+		int start = 0;
+		
+		if(pg != null) {
+			page = Integer.parseInt(pg);
+			start = (page - 1) * 10;
+		}
+		
+		return start;
+	}
+	
 	public int getLastPageNum(int total) {
 		
 		int lastPageNum = 0;
