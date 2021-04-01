@@ -19,6 +19,9 @@ public class ArticleDao {
 		return instance;
 	}
 	
+	public int getPageStartNum(int total, int start) {
+		return total - start;
+	}
 	
 	public int[] getPageGroup(int currentPage, int lastPageNum) {
 		
