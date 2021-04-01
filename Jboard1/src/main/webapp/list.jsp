@@ -33,7 +33,6 @@
 	
 	// 데이터베이스 처리
 	List<ArticleBean> articles = dao.selectArticles(start);
-	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +61,7 @@
                     <% for(ArticleBean ab : articles){ %>
 	                    <tr>
 	                        <td><%= pageStartNum-- %></td>
-	                        <td><a href="./view.html"><%= ab.getTitle() %></a>&nbsp;[<%= ab.getComment() %>]</td>
+	                        <td><a href="/Jboard1/view.jsp"><%= ab.getTitle() %></a>&nbsp;[<%= ab.getComment() %>]</td>
 	                        <td><%= ab.getNick() %></td>
 	                        <td><%= ab.getRdate().substring(2, 10) %></td>
 	                        <td><%= ab.getHit() %></td>

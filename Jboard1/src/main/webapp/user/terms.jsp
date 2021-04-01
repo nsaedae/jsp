@@ -1,3 +1,4 @@
+<%@page import="kr.co.jboard1.dao.UserDao"%>
 <%@page import="kr.co.jboard1.config.DBConfig"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -6,28 +7,7 @@
 <%@page import="kr.co.jboard1.bean.TermsBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	// 1, 2단계
-	Connection conn = DBConfig.getInstance().getConnection();
-	
-	// 3단계 - SQL 실행객체 생성
-	Statement stmt = conn.createStatement();
-	
-	// 4단계 - SQL 실행
-	String sql = "SELECT * FROM `JBOARD_TERMS`;";
-	ResultSet rs = stmt.executeQuery(sql);
-	
-	//5단계(TermsBean 생성)
-	TermsBean tb = new TermsBean();
-	
-	if(rs.next()){
-		tb.setTerms(rs.getString(1));
-		tb.setPrivacy(rs.getString(2));
-	}
-	
-	//6단계
-	rs.close();
-	stmt.close();
-	conn.close();
+	TermsBean tb = UserDao.getInstance().selectTerms();
 %>
 <!DOCTYPE html>
 <html lang="en">

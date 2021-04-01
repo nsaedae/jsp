@@ -9,6 +9,7 @@ import java.util.List;
 
 import kr.co.jboard1.bean.ArticleBean;
 import kr.co.jboard1.config.DBConfig;
+import kr.co.jboard1.config.Sql;
 
 public class ArticleDao {
 	
