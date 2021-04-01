@@ -76,7 +76,7 @@
 		                    <textarea name="comment" readonly><%= comment.getContent() %></textarea>
 		                    <div>
 		                    	<% if(uid.equals(comment.getUid())){ %>
-		                        	<a href="#">삭제</a>
+		                        	<a href="/Jboard1/proc/deleteComment.jsp?seq=<%= comment.getSeq() %>&parent=<%= comment.getParent() %>">삭제</a>
 		                        <% } %>
 		                    </div>
 		                </article>

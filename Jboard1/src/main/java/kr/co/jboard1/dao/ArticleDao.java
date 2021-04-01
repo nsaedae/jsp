@@ -264,12 +264,12 @@ public class ArticleDao {
 		conn.close();
 	}
 	
-	public void updateArticleComment(String seq) throws Exception {
+	public void updateArticleCommentInc(String seq) throws Exception {
 		// 1,2단계
 		Connection conn = DBConfig.getInstance().getConnection();
 		
 		// 3단계
-		PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT);
+		PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT_INC);
 		psmt.setString(1, seq);
 		
 		// 4단계
@@ -281,7 +281,43 @@ public class ArticleDao {
 		conn.close();
 	}
 	
+	public void updateArticleCommentDec(String seq) throws Exception {
+		// 1,2단계
+		Connection conn = DBConfig.getInstance().getConnection();
+		
+		// 3단계
+		PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT_DEC);
+		psmt.setString(1, seq);
+		
+		// 4단계
+		psmt.executeUpdate();
+		
+		// 5단계
+		// 6단계
+		psmt.close();
+		conn.close();
+	}
+	
+	
 	public void deleteArticle() throws Exception {}
+	public void deleteComment(String seq) throws Exception {
+		// 1,2단계
+		Connection conn = DBConfig.getInstance().getConnection();
+		
+		// 3단계
+		PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_COMMENT);
+		psmt.setString(1, seq);
+		
+		// 4단계
+		psmt.executeUpdate();
+		
+		// 5단계
+		// 6단계
+		psmt.close();
+		conn.close();
+	}
+	
+	
 }
 
 
