@@ -37,7 +37,29 @@ public class Sql {
 												+ "`regip`=?, "
 												+ "`rdate`=NOW();";
 	
+	public static final String INSERT_COMMENT = "INSERT INTO `JBOARD_ARTICLE` SET "
+												+ "`parent`=?,"
+												+ "`content`=?,"
+												+ "`uid`=?,"
+												+ "`regip`=?,"
+												+ "`rdate`=NOW();";
+	
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `JBOARD_ARTICLE` SET `hit` = `hit` + 1 WHERE `seq` = ?;";
+	public static final String UPDATE_ARTICLE_COMMENT = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` + 1 WHERE `seq` = ?;";
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

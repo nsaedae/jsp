@@ -76,8 +76,9 @@
             <!-- 댓글입력폼 -->
             <section class="commentForm">
                 <h3>댓글쓰기</h3>
-                <form action="#">
-                    <textarea name="comment"></textarea>
+                <form action="/Jboard1/proc/comment.jsp" method="post">
+                	<input type="hidden" name="seq" value="<%= ab.getSeq() %>" /> 
+                    <textarea name="comment" required></textarea>
                     <div>
                         <a href="#" class="btnCancel">취소</a>
                         <input type="submit" class="btnWrite" value="작성완료"/>

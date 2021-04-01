@@ -105,6 +105,25 @@ public class ArticleDao {
 		conn.close();
 	}
 	
+	public void insertComment(String parent, String content, String uid, String regip) throws Exception {
+		// 1,2단계
+		Connection conn = DBConfig.getInstance().getConnection();
+		// 3단계
+		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_COMMENT);
+		psmt.setString(1, parent);
+		psmt.setString(2, content);
+		psmt.setString(3, uid);
+		psmt.setString(4, regip);
+		
+		// 4단계
+		psmt.executeUpdate();
+		
+		// 5단계
+		// 6단계
+		psmt.close();
+		conn.close();
+	}
+	
 	public ArticleBean selectArticle(String seq) throws Exception {
 		// 1,2단계
 		Connection conn = DBConfig.getInstance().getConnection();
@@ -200,6 +219,33 @@ public class ArticleDao {
 		conn.close();
 	}
 	
+	public void updateArticleComment(String seq) throws Exception {
+		// 1,2단계
+		Connection conn = DBConfig.getInstance().getConnection();
+		
+		// 3단계
+		PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT);
+		psmt.setString(1, seq);
+		
+		// 4단계
+		psmt.executeUpdate();
+		
+		// 5단계
+		// 6단계
+		psmt.close();
+		conn.close();
+	}
 	
 	public void deleteArticle() throws Exception {}
 }
+
+
+
+
+
+
+
+
+
+
+
