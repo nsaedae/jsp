@@ -1,10 +1,27 @@
+<%@page import="kr.co.jboard1.bean.ArticleBean"%>
+<%@page import="kr.co.jboard1.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	// 전송 데이터 인코딩
+	request.setCharacterEncoding("UTF-8");
+
+	// 전송 데이터 수신
+	String seq = request.getParameter("seq");
+	
+	// 데이터베이스 처리 - 조회수 업데이트
+	ArticleDao dao = ArticleDao.getInstance();
+	dao.updateArticleHit(seq);
+	
+	// 데이터베이스 처리 - 게시물 가져오기
+	ArticleBean ab = dao.selectArticle(seq);
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>글보기</title>
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="/Jboard1/css/style.css"/>
 </head>
 <body>
     <div id="wrapper">
@@ -13,8 +30,9 @@
             <table>
                 <tr>
                     <td>제목</td>
-                    <td><input type="text" name="title" value="제목입니다." readonly/></td>
+                    <td><input type="text" name="title" value="<%= ab.getTitle() %>" readonly/></td>
                 </tr>
+                <% if(ab.getFile() > 0){ %>
                 <tr>
                     <td>첨부파일</td>
                     <td>
@@ -22,17 +40,18 @@
                         <span>7회 다운로드</span>
                     </td>
                 </tr>
+                <% } %>
                 <tr>
                     <td>내용</td>
                     <td>
-                        <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                        <textarea name="content" readonly><%= ab.getContent() %></textarea>
                     </td>
                 </tr>
             </table>
             <div>
-                <a href="#" class="btnDelete">삭제</a>
-                <a href="./modify.html" class="btnModify">수정</a>
-                <a href="./list.html" class="btnList">목록</a>
+                <a href="/Jboard1/delete.jsp" class="btnDelete">삭제</a>
+                <a href="/Jboard1/modify.jsp" class="btnModify">수정</a>
+                <a href="/Jboard1/list.jsp" class="btnList">목록</a>
             </div>  
             
             <!-- 댓글리스트 -->
