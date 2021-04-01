@@ -19,9 +19,8 @@ public class Sql {
 											   + "`regip`=?,"
 											   + "`rdate`=NOW();";
 	
-	
 	// Article ฐüทร
-	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE`;";
+	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0;";
 	
 	public static final String SELECT_ARTICLE  = "SELECT * FROM `JBOARD_ARTICLE` WHERE `seq`=?;"; 
 	public static final String SELECT_ARTICLES = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "

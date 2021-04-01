@@ -1,3 +1,5 @@
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="kr.co.jboard1.bean.ArticleBean"%>
 <%@page import="kr.co.jboard1.dao.ArticleDao"%>
 <%@page import="kr.co.jboard1.bean.UserBean"%>
@@ -10,8 +12,17 @@
 	request.setCharacterEncoding("UTF-8");
 
 	// 전송 데이터 수신
-	String title   = request.getParameter("title");
-	String content = request.getParameter("content");
+	String path = request.getServletContext().getRealPath("/file");
+	int maxSize = 1024 * 1024 * 10;
+	
+	MultipartRequest mRequest = new MultipartRequest(request, 
+													 path, 
+													 maxSize,
+													 "UTF-8",
+													 new DefaultFileRenamePolicy());
+	
+	String title   = mRequest.getParameter("title");
+	String content = mRequest.getParameter("content");
 	String regip   = request.getRemoteAddr();
 	
 	// 세션 사용자 정보객체 가져오기
