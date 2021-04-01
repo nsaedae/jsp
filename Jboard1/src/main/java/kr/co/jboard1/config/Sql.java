@@ -23,7 +23,11 @@ public class Sql {
 	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent`=0;";
 	public static final String SELECT_MAX_SEQ = "SELECT MAX(`seq`) FROM `JBOARD_ARTICLE` WHERE `parent`=0;";
 	
-	public static final String SELECT_ARTICLE  = "SELECT * FROM `JBOARD_ARTICLE` WHERE `seq`=?;"; 
+	public static final String SELECT_ARTICLE  = "SELECT * FROM `JBOARD_ARTICLE` AS a "
+												+ "LEFT JOIN `JBOARD_FILE` AS b "
+												+ "ON a.seq = b.parent "
+												+ "WHERE a.seq=?;";
+	
 	public static final String SELECT_ARTICLES = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
 												+ "ON a.uid = b.uid "
@@ -41,6 +45,7 @@ public class Sql {
 	public static final String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET "
 												+ "`title`=?, "
 												+ "`content`=?, "
+												+ "`file`=?, "
 												+ "`uid`=?, "
 												+ "`regip`=?, "
 												+ "`rdate`=NOW();";

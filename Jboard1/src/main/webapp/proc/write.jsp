@@ -37,7 +37,8 @@
 	ArticleBean article = new ArticleBean();
 	article.setTitle(title);
 	article.setContent(content);
-	article.setUid(user.getUid());
+	article.setFile(file != null ? 1 : 0);
+	article.setUid(uid);
 	article.setRegip(regip);
 	
 	int seq = ArticleDao.getInstance().insertArticle(article);

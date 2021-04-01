@@ -1,3 +1,4 @@
+<%@page import="kr.co.jboard1.bean.FileBean"%>
 <%@page import="kr.co.jboard1.bean.UserBean"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.jboard1.bean.ArticleBean"%>
@@ -44,8 +45,8 @@
                 <tr>
                     <td>첨부파일</td>
                     <td>
-                        <a href="#">2020년 상반기 매출자료.xls</a>
-                        <span>7회 다운로드</span>
+                        <a href="#"><%= ab.getFb().getOldName() %></a>
+                        <span><%= ab.getFb().getDownload() %>회 다운로드</span>
                     </td>
                 </tr>
                 <% } %>
