@@ -20,10 +20,12 @@ public class ArticleDao {
 		return instance;
 	}
 	
+	// 게시판 리스트 페이지 처리관련 메서드
 	public int getPageStartNum(int total, int start) {
 		return total - start;
 	}
 	
+	// 게시판 리스트 페이지 처리관련 메서드
 	public int[] getPageGroup(int currentPage, int lastPageNum) {
 		
 		int groupCurrent = (int) Math.ceil(currentPage / 10.0);
@@ -39,6 +41,7 @@ public class ArticleDao {
 		return groups;
 	}
 	
+	// 게시판 리스트 페이지 처리관련 메서드
 	public int getCurrentPage(String pg) {
 		int currentPage = 1;
 		
@@ -48,10 +51,12 @@ public class ArticleDao {
 		return currentPage;
 	}
 	
+	// 게시판 리스트 페이지 처리관련 메서드
 	public int getLimitStart(int currentPage) {
 		return (currentPage - 1) * 10;
 	}
 	
+	// 게시판 리스트 페이지 처리관련 메서드
 	public int getLastPageNum(int total) {
 		
 		int lastPageNum = 0;
@@ -198,6 +203,46 @@ public class ArticleDao {
 		conn.close();
 		
 		return articles;
+	}
+	
+	public List<ArticleBean> selectComments(String parent) throws Exception {
+		// 1,2단계
+		Connection conn = DBConfig.getInstance().getConnection();
+		
+		// 3단계
+		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COMMENTS);
+		psmt.setString(1, parent);
+		
+		// 4단계
+		ResultSet rs = psmt.executeQuery();
+		
+		// 5단계
+		List<ArticleBean> comments = new ArrayList<>();
+		
+		while(rs.next()) {
+			ArticleBean ab = new ArticleBean();
+			ab.setSeq(rs.getInt(1));
+			ab.setParent(rs.getInt(2));
+			ab.setComment(rs.getInt(3));
+			ab.setCate(rs.getString(4));
+			ab.setTitle(rs.getString(5));
+			ab.setContent(rs.getString(6));
+			ab.setFile(rs.getInt(7));
+			ab.setHit(rs.getInt(8));
+			ab.setUid(rs.getString(9));
+			ab.setRegip(rs.getString(10));
+			ab.setRdate(rs.getString(11));
+			ab.setNick(rs.getString(12));
+			
+			comments.add(ab);
+		}
+		
+		// 6단계
+		rs.close();
+		psmt.close();
+		conn.close();
+		
+		return comments;
 	}
 	
 	public void updateArticle() throws Exception {}

@@ -1,3 +1,5 @@
+<%@page import="kr.co.jboard1.bean.UserBean"%>
+<%@page import="java.util.List"%>
 <%@page import="kr.co.jboard1.bean.ArticleBean"%>
 <%@page import="kr.co.jboard1.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
@@ -8,6 +10,10 @@
 	// 전송 데이터 수신
 	String seq = request.getParameter("seq");
 	
+	// 세션 사용자 정보 가져오기
+	UserBean user = (UserBean) session.getAttribute("suser");
+	String uid = user.getUid();
+	
 	// 데이터베이스 처리 - 조회수 업데이트
 	ArticleDao dao = ArticleDao.getInstance();
 	dao.updateArticleHit(seq);
@@ -15,6 +21,8 @@
 	// 데이터베이스 처리 - 게시물 가져오기
 	ArticleBean ab = dao.selectArticle(seq);
 	
+	// 데이터베이스 처리 - 댓글 가져오기
+	List<ArticleBean> comments = dao.selectComments(seq);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,20 +65,28 @@
             <!-- 댓글리스트 -->
             <section class="commentList">
                 <h3>댓글목록</h3>
-                <article class="comment">
-                    <span>
-                        <span>길동이</span>
-                        <span>20-05-13</span>
-                    </span>
-                    <textarea name="comment" readonly>댓글 샘플입니다.</textarea>
-                    <div>
-                        <a href="#">삭제</a>
-                        <a href="#">수정</a>
-                    </div>
-                </article>
-                <p class="empty">
-                    등록된 댓글이 없습니다.
-                </p>
+                <% if(ab.getComment() > 0){ %>
+                	
+                	<% for(ArticleBean comment : comments){ %>
+		                <article class="comment">
+		                    <span>
+		                        <span><%= comment.getNick() %></span>
+		                        <span><%= comment.getRdate().substring(2, 10) %></span>
+		                    </span>
+		                    <textarea name="comment" readonly><%= comment.getContent() %></textarea>
+		                    <div>
+		                    	<% if(uid.equals(comment.getUid())){ %>
+		                        	<a href="#">삭제</a>
+		                        <% } %>
+		                    </div>
+		                </article>
+	                <% } %>
+	                
+                <% }else{ %>
+	                <p class="empty">
+	                    등록된 댓글이 없습니다.
+	                </p>
+                <% } %>
             </section>
 
             <!-- 댓글입력폼 -->
