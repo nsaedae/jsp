@@ -47,7 +47,46 @@ public class UserDao {
 		conn.close();
 	}
 	
-	public void selectUser()  throws Exception {}
+	public UserBean selectUser(String uid, String pass)  throws Exception {
+		// 1, 2단계
+		Connection conn = DBConfig.getInstance().getConnection();
+		
+		// 3단계		
+		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_USER);
+		psmt.setString(1, uid);
+		psmt.setString(2, pass);
+		
+		// 4단계
+		ResultSet rs = psmt.executeQuery();
+		
+		// 5단계
+		UserBean user = null;
+		
+		if(rs.next()){
+			// 회원이 맞을 경우
+			user = new UserBean();
+			
+			user.setUid(rs.getString(1));
+			user.setPass(rs.getString(2));
+			user.setName(rs.getString(3));
+			user.setNick(rs.getString(4));
+			user.setEmail(rs.getString(5));
+			user.setHp(rs.getString(6));
+			user.setGrade(rs.getInt(7));
+			user.setZip(rs.getString(8));
+			user.setAddr1(rs.getString(9));
+			user.setAddr2(rs.getString(10));
+			user.setRegip(rs.getString(11));
+			user.setRdate(rs.getString(12));
+		}
+		
+		// 6단계
+		rs.close();
+		psmt.close();
+		conn.close();
+		
+		return user;
+	}
 	public void selectUsers() throws Exception {}
 	public void updateUser()  throws Exception {}
 	public void deleteUser()  throws Exception {}

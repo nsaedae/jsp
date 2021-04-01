@@ -4,6 +4,8 @@ public class Sql {
 	
 	// User ฐüทร
 	public static final String SELECT_TERMS = "SELECT * FROM `JBOARD_TERMS`;";
+	
+	public static final String SELECT_USER  = "SELECT * FROM `JBOARD_USER` WHERE `uid`=? AND `pass`=PASSWORD(?);";
 	public static final String INSERT_USER  = "INSERT INTO `JBOARD_USER` SET "
 											   + "`uid`=?,"
 											   + "`pass`=PASSWORD(?),"
