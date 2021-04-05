@@ -3,10 +3,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>hello</title>
+	<title>greeting</title>
 </head>
 <body>
-	<h1>Hello</h1>
+	<h1>Greeting</h1>
 	
 	<a href="/Ch10/hello.do">hello</a>
 	<a href="/Ch10/welcome.do">welcome</a>
