@@ -23,6 +23,7 @@ public class RegisterService implements CommonService {
 			String zip   = req.getParameter("zip");
 			String addr1 = req.getParameter("addr1");
 			String addr2 = req.getParameter("addr2");
+			String regip = req.getRemoteAddr();
 			
 			UserVo vo = new UserVo();
 			vo.setUid(uid);
@@ -34,6 +35,7 @@ public class RegisterService implements CommonService {
 			vo.setZip(zip);
 			vo.setAddr1(addr1);
 			vo.setAddr2(addr2);
+			vo.setRegip(regip);
 			
 			try {
 				UserDao.getInstance().insertUser(vo);

@@ -18,8 +18,6 @@ public class UserDao {
 	}
 	
 	private UserDao() {}
-
-	
 	
 	public void insertUser(UserVo vo) throws Exception {
 		// 1,2´Ü°è
