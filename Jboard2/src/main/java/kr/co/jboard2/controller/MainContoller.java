@@ -84,11 +84,18 @@ public class MainContoller extends HttpServlet {
 		CommonService instance = (CommonService) instances.get(key);		
 		
 		// service 객체 실행후 view 리턴 받기
-		String view = instance.requestProc(req, resp);
-	
-		// View 포워드
-		RequestDispatcher dispatcher = req.getRequestDispatcher(view);
-		dispatcher.forward(req, resp);
+		String result = instance.requestProc(req, resp);
+		
+		if(result.startsWith("redirect:")) {
+			// 리다이렉트
+			String redirectUrl = result.substring(9);			
+			resp.sendRedirect(redirectUrl);
+			
+		}else {
+			// View 포워드
+			RequestDispatcher dispatcher = req.getRequestDispatcher(result);
+			dispatcher.forward(req, resp);	
+		}
 	}
 }
 
