@@ -10,10 +10,22 @@
     	$(function(){
     		
     		$('input[name=uid]').focusout(function(){
+    			var uid = $(this).val();
+    			var jsonData = {'uid': uid};
     			
-    			alert('확인!');
-    			
-    			
+    			$.ajax({
+    				url: '/Jboard2/user/checkUid.do',
+    				type: 'get',
+    				data: jsonData,
+    				dataType: 'json',
+    				success: function(data){				
+    					if(data.result == 0){
+    						$('.resultId').css('color', 'green').text('사용 가능한 아이디 입니다.');
+    					}else{
+    						$('.resultId').css('color', 'red').text('이미 사용중인 아이디 입니다.');
+    					}
+    				}
+    			});
     		});
     	});
     </script>
