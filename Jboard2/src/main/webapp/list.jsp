@@ -44,7 +44,7 @@
                 </c:if>
                 
                 <c:forEach var="i" begin="${groups[0]}" end="${groups[1]}">
-                	<a href="/Jboard2/list.do?pg=${i}" class="num">${i}</a>                
+                	<a href="/Jboard2/list.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>                
 				</c:forEach>
 				
 				<c:if test="${groups[1] < lastPageNum}">     

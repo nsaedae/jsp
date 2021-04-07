@@ -31,6 +31,7 @@ public class ListService implements CommonService {
 		// Controller, Service, View에서 공통으로 공유하는 request객체를 이용한 데이터 참조
 		req.setAttribute("articles", articles);
 		req.setAttribute("listStartNum", listStartNum);
+		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("groups", groups);
 		
