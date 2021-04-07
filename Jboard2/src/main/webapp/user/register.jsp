@@ -5,6 +5,20 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <link rel="stylesheet" href="/Jboard2/css/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    	$(function(){
+    		
+    		$('input[name=uid]').focusout(function(){
+    			
+    			alert('확인!');
+    			
+    			
+    		});
+    	});
+    </script>
+    
+    
 </head>
 <body>
     <div id="wrapper">

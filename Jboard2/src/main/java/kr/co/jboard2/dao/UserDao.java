@@ -42,6 +42,26 @@ public class UserDao {
 		conn.close();
 	}
 	
+	public int selectCountUser(String uid) throws Exception {
+		Connection conn = DBConfig.getInstance().getConnection();
+		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_USER);
+		psmt.setString(1, uid);
+		
+		ResultSet rs = psmt.executeQuery();
+		
+		int count = 0;
+		
+		if(rs.next()) {
+			count = rs.getInt(1);
+		}
+		
+		rs.close();
+		psmt.close();
+		conn.close();
+		
+		return count;
+	}
+	
 	public void selectUser() throws Exception {}
 	public void selectUsers() throws Exception {}
 	public TermsVo selectTerms() throws Exception {

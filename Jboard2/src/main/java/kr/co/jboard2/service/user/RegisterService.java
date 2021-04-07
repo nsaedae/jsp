@@ -42,9 +42,7 @@ public class RegisterService implements CommonService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 			return "redirect:/Jboard2/user/login.do";
-			
 		}else {
 			return "/user/register.jsp";
 		}

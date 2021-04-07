@@ -31,12 +31,12 @@
   
   <!-- 컨트롤러 등록 -->
   <servlet>
-  	<servlet-name>MainContoller</servlet-name>
-  	<servlet-class>kr.co.jboard2.controller.MainContoller</servlet-class>
+  	<servlet-name>MainController</servlet-name>
+  	<servlet-class>kr.co.jboard2.controller.MainController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>MainContoller</servlet-name>
+  	<servlet-name>MainController</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
   
