@@ -406,9 +406,27 @@ main > .info > div > .account {
 #sub > .cate3 .lnb > li:nth-child(2).on > a {background-image: url('../img/sub_cate3_lnb2_ov.png');}
 #sub > .cate3 .lnb > li:nth-child(3).on > a {background-image: url('../img/sub_cate3_lnb3_ov.png');}
 
-
 /* 이벤트 */
+#sub > .cate4 .lnb > li:nth-child(1) > a {background-image: url('../img/sub_cate4_lnb1.png');}
+#sub > .cate4 .lnb > li:nth-child(1) > a:hover {background-image: url('../img/sub_cate4_lnb1_ov.png');}
+#sub > .cate4 .lnb > li:nth-child(1).on > a {background-image: url('../img/sub_cate4_lnb1_ov.png');}
+
 /* 커뮤니티 */
+#sub > .cate5 .lnb > li:nth-child(1) > a {background-image: url('../img/sub_cate5_lnb1.png');}
+#sub > .cate5 .lnb > li:nth-child(2) > a {background-image: url('../img/sub_cate5_lnb2.png');}
+#sub > .cate5 .lnb > li:nth-child(3) > a {background-image: url('../img/sub_cate5_lnb3.png');}
+#sub > .cate5 .lnb > li:nth-child(4) > a {background-image: url('../img/sub_cate5_lnb4.png');}
+#sub > .cate5 .lnb > li:nth-child(5) > a {background-image: url('../img/sub_cate5_lnb5.png');}
+#sub > .cate5 .lnb > li:nth-child(1) > a:hover {background-image: url('../img/sub_cate5_lnb1_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(2) > a:hover {background-image: url('../img/sub_cate5_lnb2_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(3) > a:hover {background-image: url('../img/sub_cate5_lnb3_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(4) > a:hover {background-image: url('../img/sub_cate5_lnb4_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(5) > a:hover {background-image: url('../img/sub_cate5_lnb5_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(1).on > a {background-image: url('../img/sub_cate5_lnb1_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(2).on > a {background-image: url('../img/sub_cate5_lnb2_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(3).on > a {background-image: url('../img/sub_cate5_lnb3_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(4).on > a {background-image: url('../img/sub_cate5_lnb4_ov.png');}
+#sub > .cate5 .lnb > li:nth-child(5).on > a {background-image: url('../img/sub_cate5_lnb5_ov.png');}
 
 
 /* 회원-로그인 */
