@@ -27,7 +27,7 @@
                     <c:forEach var="article" items="${articles}">
 	                    <tr>
 	                        <td>${listStartNum = listStartNum - 1}</td>
-	                        <td><a href="./view.html">${article.title}</a>&nbsp;[${article.comment}]</td>
+	                        <td><a href="/Jboard2/view.do?seq=${article.seq}">${article.title}</a>&nbsp;[${article.comment}]</td>
 	                        <td>${article.nick}</td>
 	                        <td>${article.rdate.substring(2, 10)}</td>
 	                        <td>${article.hit}</td>

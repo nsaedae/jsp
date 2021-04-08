@@ -101,23 +101,28 @@ public class ArticleDao {
 		return seq;
 	}
 	
-	public void insertComment(String parent, String content, String uid, String regip) throws Exception {
-		// 1,2단계
-		Connection conn = DBConfig.getInstance().getConnection();
-		// 3단계
-		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_COMMENT);
-		psmt.setString(1, parent);
-		psmt.setString(2, content);
-		psmt.setString(3, uid);
-		psmt.setString(4, regip);
+	public void insertComment(String parent, String content, String uid, String regip) {
 		
-		// 4단계
-		psmt.executeUpdate();
-		
-		// 5단계
-		// 6단계
-		psmt.close();
-		conn.close();
+		try {
+			// 1,2단계
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3단계
+			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_COMMENT);
+			psmt.setString(1, parent);
+			psmt.setString(2, content);
+			psmt.setString(3, uid);
+			psmt.setString(4, regip);
+			
+			// 4단계
+			psmt.executeUpdate();
+			
+			// 5단계
+			// 6단계
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void insertFile(int parent, String oldName, String newName) {
@@ -143,50 +148,54 @@ public class ArticleDao {
 		}
 	}
 	
-	
-	
-	public ArticleVo selectArticle(String seq) throws Exception {
-		// 1,2단계
-		Connection conn = DBConfig.getInstance().getConnection();
+	public ArticleVo selectArticle(String seq) {
 		
-		// 3단계
-		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLE);
-		psmt.setString(1, seq);
-		
-		// 4단계
-		ResultSet rs = psmt.executeQuery();
-		
-		// 5단계
 		ArticleVo ab = new ArticleVo();
-		FileVo fb = new FileVo();
 		
-		if(rs.next()) {
-			ab.setSeq(rs.getInt(1));
-			ab.setParent(rs.getInt(2));
-			ab.setComment(rs.getInt(3));
-			ab.setCate(rs.getString(4));
-			ab.setTitle(rs.getString(5));
-			ab.setContent(rs.getString(6));
-			ab.setFile(rs.getInt(7));
-			ab.setHit(rs.getInt(8));
-			ab.setUid(rs.getString(9));
-			ab.setRegip(rs.getString(10));
-			ab.setRdate(rs.getString(11));
+		try {
+			// 1,2단계
+			Connection conn = DBConfig.getInstance().getConnection();
 			
-			fb.setSeq(rs.getInt(12));
-			fb.setParent(rs.getInt(13));
-			fb.setOldName(rs.getString(14));
-			fb.setNewName(rs.getString(15));
-			fb.setDownload(rs.getInt(16));
-			fb.setRdate(rs.getString(17));
+			// 3단계
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLE);
+			psmt.setString(1, seq);
 			
-			ab.setFb(fb);
-		}
+			// 4단계
+			ResultSet rs = psmt.executeQuery();
+			
+			// 5단계
+			FileVo fb = new FileVo();
+			
+			if(rs.next()) {
+				ab.setSeq(rs.getInt(1));
+				ab.setParent(rs.getInt(2));
+				ab.setComment(rs.getInt(3));
+				ab.setCate(rs.getString(4));
+				ab.setTitle(rs.getString(5));
+				ab.setContent(rs.getString(6));
+				ab.setFile(rs.getInt(7));
+				ab.setHit(rs.getInt(8));
+				ab.setUid(rs.getString(9));
+				ab.setRegip(rs.getString(10));
+				ab.setRdate(rs.getString(11));
 				
-		// 6단계
-		rs.close();
-		psmt.close();
-		conn.close();
+				fb.setSeq(rs.getInt(12));
+				fb.setParent(rs.getInt(13));
+				fb.setOldName(rs.getString(14));
+				fb.setNewName(rs.getString(15));
+				fb.setDownload(rs.getInt(16));
+				fb.setRdate(rs.getString(17));
+				
+				ab.setFb(fb);
+			}
+					
+			// 6단계
+			rs.close();
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return ab;
 	}
@@ -296,21 +305,26 @@ public class ArticleDao {
 		conn.close();
 	}
 	
-	public void updateArticleCommentInc(String seq) throws Exception {
-		// 1,2단계
-		Connection conn = DBConfig.getInstance().getConnection();
+	public void updateArticleCommentInc(String seq) {
+		try {
+			// 1,2단계
+			Connection conn = DBConfig.getInstance().getConnection();
+			
+			// 3단계
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT_INC);
+			psmt.setString(1, seq);
+			
+			// 4단계
+			psmt.executeUpdate();
+			
+			// 5단계
+			// 6단계
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		// 3단계
-		PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT_INC);
-		psmt.setString(1, seq);
-		
-		// 4단계
-		psmt.executeUpdate();
-		
-		// 5단계
-		// 6단계
-		psmt.close();
-		conn.close();
 	}
 	
 	public void updateArticleCommentDec(String seq) throws Exception {
