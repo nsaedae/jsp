@@ -80,9 +80,9 @@ public class ArticleDao {
 			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ARTICLE);
 			psmt.setString(1, article.getTitle());
 			psmt.setString(2, article.getContent());
-			//psmt.setInt(3, article.getFile());
-			psmt.setString(3, article.getUid());
-			psmt.setString(4, article.getRegip());
+			psmt.setInt(3, article.getFile());
+			psmt.setString(4, article.getUid());
+			psmt.setString(5, article.getRegip());
 			
 			// 4단계
 			psmt.executeUpdate();
@@ -120,23 +120,27 @@ public class ArticleDao {
 		conn.close();
 	}
 	
-	public void insertFile(int parent, String oldName, String newName) throws Exception {
-		// 1,2단계
-		Connection conn = DBConfig.getInstance().getConnection();
-		
-		// 3단계
-		PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_FILE);
-		psmt.setInt(1, parent);
-		psmt.setString(2, oldName);
-		psmt.setString(3, newName);
-		
-		// 4단계
-		psmt.executeUpdate();
-		
-		// 5단계
-		// 6단계
-		psmt.close();
-		conn.close();
+	public void insertFile(int parent, String oldName, String newName) {
+		try {
+			// 1,2단계
+			Connection conn = DBConfig.getInstance().getConnection();
+			
+			// 3단계
+			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_FILE);
+			psmt.setInt(1, parent);
+			psmt.setString(2, oldName);
+			psmt.setString(3, newName);
+			
+			// 4단계
+			psmt.executeUpdate();
+			
+			// 5단계
+			// 6단계
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
