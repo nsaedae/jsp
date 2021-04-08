@@ -21,6 +21,35 @@ public class ArticleDao {
 		return instance;
 	}
 	
+	public FileVo selectFile(String seq) {
+		
+		FileVo vo = new FileVo();
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_FILE);
+			psmt.setString(1, seq);
+			
+			ResultSet rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setSeq(rs.getInt(1));
+				vo.setParent(rs.getInt(2));
+				vo.setOldName(rs.getString(3));
+				vo.setNewName(rs.getString(4));
+				vo.setDownload(rs.getInt(5));
+				vo.setRdate(rs.getString(5));
+			}
+			
+			rs.close();
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
 	public int selectCountArticle() {
 		
 		int total = 0;
@@ -286,6 +315,18 @@ public class ArticleDao {
 		return comments;
 	}
 	
+	public void updateFileDownload(String seq) {
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_FILE_DOWNLOAD);
+			psmt.setString(1, seq);
+			psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void updateArticle() throws Exception {}
 	
 	public void updateArticleHit(String seq) throws Exception {

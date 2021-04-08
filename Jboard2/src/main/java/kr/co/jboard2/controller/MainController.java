@@ -3,6 +3,7 @@ package kr.co.jboard2.controller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -97,6 +98,17 @@ public class MainController extends HttpServlet {
 			PrintWriter out = resp.getWriter();
 			out.print(result.substring(5));				
 			
+		}else if(result.startsWith("file:")) {
+			
+			String fname = result.substring(5);
+			
+			// 파일 다운로드 response 헤더수정
+			resp.setContentType("application/octet-stream");
+			resp.setHeader("Content-Disposition", "attachment; filename="+URLEncoder.encode(fname, "utf-8"));
+			resp.setHeader("Content-Transfer-Encoding", "binary");
+			resp.setHeader("Pragma", "no-cache");
+			resp.setHeader("Cache-Control", "private");
+		
 		}else {
 			// View 포워드
 			RequestDispatcher dispatcher = req.getRequestDispatcher(result);

@@ -20,7 +20,7 @@
 	                <tr>
 	                    <td>첨부파일</td>
 	                    <td>
-	                        <a href="#">${ab.fb.oldName}</a>
+	                        <a href="/Jboard2/download.do?seq=${ab.fb.seq}">${ab.fb.oldName}</a>
 	                        <span>${ab.fb.download}회 다운로드</span>
 	                    </td>
 	                </tr>
