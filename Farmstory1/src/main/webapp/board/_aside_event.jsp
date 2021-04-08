@@ -5,7 +5,7 @@
         <aside>
             <img src="/Farmstory1/img/sub_aside_cate4_tit.png" alt="이벤트"/>
             <ul class="lnb">
-                <li class="on"><a href="/Farmstory1/board/list.jsp">이벤트</a></li>
+                <li class="on"><a href="/Farmstory1/board/list.jsp?group=event&cate=event">이벤트</a></li>
             </ul>
         </aside>
         <article>

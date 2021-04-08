@@ -26,8 +26,6 @@
                     <% }else if(cate.equals("school")){ %>
                     	<em>귀농학교</em>
                     <% } %>
-                    
-                    
                 </p>
             </nav>
             <!-- 내용 시작 -->
