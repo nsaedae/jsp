@@ -43,9 +43,9 @@ public class Sql {
 	
 
 	public static final String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET "
+												+ "`cate`=?, "
 												+ "`title`=?, "
 												+ "`content`=?, "
-												+ "`file`=?, "
 												+ "`uid`=?, "
 												+ "`regip`=?, "
 												+ "`rdate`=NOW();";
