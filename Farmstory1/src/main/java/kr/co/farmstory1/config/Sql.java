@@ -31,9 +31,9 @@ public class Sql {
 	public static final String SELECT_ARTICLES = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
 												+ "ON a.uid = b.uid "
-												+ "WHERE `parent`=0 "
-												+ "ORDER BY `seq` DESC "
-												+ "LIMIT ?, 10";
+												+ "WHERE `parent`=0 AND `cate`=? "
+												+ "ORDER BY `seq` DESC";
+												
 	
 	public static final String SELECT_COMMENTS = "SELECT a.*, b.nick FROM `JBOARD_ARTICLE` AS a "
 												+ "JOIN `JBOARD_USER` AS b "
