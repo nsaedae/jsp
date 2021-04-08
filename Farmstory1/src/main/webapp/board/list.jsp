@@ -2,6 +2,8 @@
 <%@ include file="../_header.jsp" %>
 <%
 	String group = request.getParameter("group");
+	String cate  = request.getParameter("cate");
+
 	String path = "./_aside_"+group+".jsp";	
 %>
 <jsp:include page="<%= path %>"></jsp:include>
@@ -25,7 +27,7 @@
             </tr>
         </table>
     </article>
-
+    
     <!-- 페이지 네비게이션 -->
     <div class="paging">
         <a href="#" class="prev">이전</a>
@@ -34,16 +36,13 @@
         <a href="#" class="num">3</a>                
         <a href="#" class="next">다음</a>
     </div>
-
+    
     <!-- 글쓰기 버튼 -->
     <a href="./write.html" class="btnWrite">글쓰기</a>
-
+    
 </section>
 <!-- 내용 끝 -->
 </article>
 </section>
 </div>
 <%@ include file="../_footer.jsp" %>
-
-
-
