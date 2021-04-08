@@ -11,7 +11,7 @@
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form action="/Jboard2/write.do" method="POST">
+                <form action="/Jboard2/write.do" method="POST" enctype="multipart/form-data">
                 	<input type="hidden" name="uid" value="${suser.uid}" />
                     <table>
                         <tr>
