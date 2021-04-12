@@ -6,7 +6,7 @@
             <img src="/Farmstory2/img/sub_aside_cate4_tit.png" alt="농작물이야기"/>
 
             <ul class="lnb">
-                <li class="on"><a href="/Farmstory2/board/list.do?group=event">이벤트</a></li>
+                <li class="on"><a href="/Farmstory2/board/list.do?group=event&cate=event">이벤트</a></li>
             </ul>
 
         </aside>

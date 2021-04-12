@@ -23,7 +23,7 @@
     </table>
     <div>
         <a href="#" class="btnDelete">삭제</a>
-        <a href="./modify.html" class="btnModify">수정</a>
+        <a href="/Farmstory2/board/modify.do" class="btnModify">수정</a>
         <a href="./list.html" class="btnList">목록</a>
     </div>  
     
