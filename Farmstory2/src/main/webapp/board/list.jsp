@@ -1,5 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../_header.jsp"></jsp:include>
+
+<c:if test="${group eq 'market'}"><jsp:include page="./_aside_market.jsp"/></c:if>
+<c:if test="${group eq 'croptalk'}"><jsp:include page="./_aside_croptalk.jsp"/></c:if>
+<c:if test="${group eq 'event'}"><jsp:include page="./_aside_event.jsp"/></c:if>
+<c:if test="${group eq 'community'}"><jsp:include page="./_aside_community.jsp"/></c:if>
+
 <section id="board" class="list">
     <h3>글목록</h3>
     <article>
@@ -38,4 +45,10 @@
     <a href="./write.html" class="btnWrite">글쓰기</a>
 
 </section>
+
+<!-- 내용 끝 -->
+
+        </article>
+    </section>
+</div>
 <jsp:include page="../_footer.jsp"></jsp:include>

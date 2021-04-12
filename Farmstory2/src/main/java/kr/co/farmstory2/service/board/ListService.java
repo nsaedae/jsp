@@ -9,6 +9,14 @@ public class ListService implements CommonService {
 
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) {
+		
+		String group = req.getParameter("group");
+		
+		
+		
+		req.setAttribute("group", group);
+		
+		
 		return "/board/list.jsp";
 	}
 
