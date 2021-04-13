@@ -5,7 +5,6 @@
 		$('input[name=uid]').focusout(function(){
 			
 			var uid = $(this).val();
-			
 			var jsonData = {'uid': uid};
 			
 			$.ajax({
@@ -22,11 +21,7 @@
 					}
 				}
 			});
-			
 		});
-		
-		
-		
 	});
 </script>
 <section id="user" class="register">
