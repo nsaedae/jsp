@@ -10,10 +10,6 @@
 <section id="board" class="list">
     <h3>글목록</h3>
     <article>
-        <p>
-            홍길동님 반갑습니다.
-            <a href="./user/login.html" class="logout">[로그아웃]</a>
-        </p>
         <table border="0">
             <tr>
                 <th>번호</th>
@@ -42,7 +38,7 @@
     </div>
 
     <!-- 글쓰기 버튼 -->
-    <a href="/Farmstory2/board/write.do" class="btnWrite">글쓰기</a>
+    <a href="/Farmstory2/board/write.do?group=${group}&cate=${cate}" class="btnWrite">글쓰기</a>
 
 </section>
 

@@ -47,6 +47,8 @@ public class Sql {
 												+ "WHERE `parent`=? "
 												+ "ORDER BY `seq` ASC;";
 	
+	public static final String SELECT_FILE = "";
+	
 
 	public static final String INSERT_ARTICLE = "INSERT INTO `JBOARD_ARTICLE` SET "
 												+ "`cate`=?, "
@@ -73,7 +75,7 @@ public class Sql {
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `JBOARD_ARTICLE` SET `hit` = `hit` + 1 WHERE `seq` = ?;";
 	public static final String UPDATE_ARTICLE_COMMENT_INC = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` + 1 WHERE `seq` = ?;";
 	public static final String UPDATE_ARTICLE_COMMENT_DEC = "UPDATE `JBOARD_ARTICLE` SET `comment` = `comment` - 1 WHERE `seq` = ?;";
-	
+	public static final String UPDATE_FILE_DOWNLOAD = "";
 	
 	public static final String DELETE_COMMENT = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?;";
 	
