@@ -20,7 +20,7 @@
         <p>
             아직 회원이 아니시면 회원으로 가입하세요.
         </p>
-        <a href="./terms.html">회원가입</a>
+        <a href="/Farmstory2/user/terms.do">회원가입</a>
     </div>
 
 </section>
